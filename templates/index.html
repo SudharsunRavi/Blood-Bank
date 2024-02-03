@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Blood Bank</title>
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}" />
+        <script type="text/javascript" src="{{ url_for('static', filename='js/index.js') }}"></script>
+    </head>
+<body>
+    <div class="main">
+        <h1>Welcome to Blood Bank</h1>
+
+        <div class="donor">
+            <h2>Donor List</h2>
+            <input type="text" id="searchCity" onkeyup="filterDonorsByCity()" placeholder="Enter city">
+
+            <div class="list">
+                <table id="donorsTable">
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Blood Type</th>
+                            <th>Email</th>
+                            <th>City</th>
+                            <th>Phone Number</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for donor in donors %}
+                            <tr>
+                                <td>{{ donor[0] }}</td>
+                                <td>{{ donor[1] }}</td>
+                                <td>{{ donor[2] }}</td>
+                                <td>{{ donor[3] }}</td>
+                                <td>{{ donor[4] }}</td>
+                                <td><a href="{{ url_for('delete_donor', email=donor[2]) }}" class="delete-btn">X</a></td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <button class="btn-add-donor" onclick="window.location.href='{{ url_for('add_donor') }}'">Add Donor</button>
+</body>
+</html>

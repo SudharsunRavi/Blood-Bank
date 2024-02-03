@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Blood Bank</title>
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}" />
+        <script type="text/javascript" src="{{ url_for('static', filename='js/index.js') }}"></script>
+    </head>
+<body>
+    <div class="main">
+        <h1>Welcome to Blood Bank</h1>
+        
+        <div class="form-container">
+            <h1>Add Donor</h1>
+            <form method="POST" action="{{ url_for('add_donor') }}">
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name" required autocomplete="off" onblur="capitalizeFirstLetter('name')">
+
+                <label for="blood_type">Blood Type:</label>
+                <select id="blood_type" name="blood_type" required autocomplete="off">
+                    <option value="A+">A+</option>
+                    <option value="A-">A-</option>
+                    <option value="B+">B+</option>
+                    <option value="B-">B-</option>
+                    <option value="AB+">AB+</option>
+                    <option value="AB-">AB-</option>
+                    <option value="O+">O+</option>
+                    <option value="O-">O-</option>
+                </select>
+
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required autocomplete="off">
+
+                <label for="city">City:</label>
+                <input type="text" id="city" name="city" required autocomplete="off" onblur="capitalizeFirstLetter('city')">
+
+                <label for="number">Phone Number:</label>
+                <input type="text" id="number" name="number" required autocomplete="off" onblur="capitalizeFirstLetter('number')">
+
+                <button type="submit" onclick="applySentenceCase()">Add Donor</button>
+            </form>
+        </div>
+    </div>
+</body>
+</html>
